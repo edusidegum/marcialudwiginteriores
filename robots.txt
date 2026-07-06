@@ -1,4 +1,41 @@
+# robots.txt - Projeto Marcia Ludwig Interiores
+# Hospedado em GitHub Pages: https://edusidegum.github.io/marcialudwiginteriores/
+# Padrão: Anexo A do Projeto Ecossistema HLF Vs4
+#
+# Observação: GitHub Pages não suporta .htaccess nem X-Robots-Tag.
+# O robots.txt apenas orienta os rastreadores; não bloqueia acesso direto a arquivos.
+# Diretórios de dados estruturados (JSON) são desestimulados para indexação.
+
+# ---------------------------------------------------------------------------
+# Regras gerais para todos os rastreadores
+# ---------------------------------------------------------------------------
 User-agent: *
 Allow: /
 
+# Bloqueia indexação de dados estruturados internos (ex.: posts.json)
+Disallow: /marcialudwiginteriores/data/
+
+# Desestimula rastreamento individual de assets internos
+# (NOTA: GitHub Pages não bloqueia via robots.txt, apenas desestimula)
+Disallow: /marcialudwiginteriores/assets/
+
+# ---------------------------------------------------------------------------
+# Googlebot - rastreador do Google (explícito)
+# ---------------------------------------------------------------------------
+User-agent: Googlebot
+Allow: /
+Disallow: /marcialudwiginteriores/data/
+Disallow: /marcialudwiginteriores/assets/
+
+# ---------------------------------------------------------------------------
+# bingbot - rastreador do Bing (explícito)
+# ---------------------------------------------------------------------------
+User-agent: bingbot
+Allow: /
+Disallow: /marcialudwiginteriores/data/
+Disallow: /marcialudwiginteriores/assets/
+
+# ---------------------------------------------------------------------------
+# Sitemap - URL absoluta do sitemap do projeto
+# ---------------------------------------------------------------------------
 Sitemap: https://edusidegum.github.io/marcialudwiginteriores/sitemap.xml
