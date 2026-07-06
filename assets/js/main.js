@@ -1,15 +1,20 @@
 // assets/js/main.js
-// Marcia Ludwig Interiores
-// Atualiza dinamicamente a seção "Do Instagram" com o post mais recente.
-// Carregado com defer, portanto o DOM já está disponível.
+// Marcia Ludwig Interiores - Script principal
+// Atualiza dinamicamente a seção "Do Instagram" no index.html
+// com o post mais recente proveniente de data/posts.json.
+//
+// Estrutura esperada de data/posts.json:
+// {
+//   "updatedAt": "2026-07-06",
+//   "posts": [ { ... } ]
+// }
+//
+// Carregado com `defer`, portanto o DOM já está disponível.
+// Sem dependências externas. Apenas navegadores modernos (ES6+).
 
 (() => {
-  "use strict";
-
-  // URL relativa do JSON com os posts do Instagram.
+  // URL relativa do arquivo de dados e URL de fallback do Instagram.
   const POSTS_URL = "data/posts.json";
-
-  // URL de fallback do Instagram (caso o JSON não esteja disponível).
   const INSTAGRAM_FALLBACK_URL = "https://www.instagram.com/marcialudwiginteriores/";
 
   /**
@@ -17,90 +22,83 @@
    * @param {Object} post - Objeto do post mais recente.
    */
   const updateInstagramSection = (post) => {
-    const {
-      image,
-      alt,
-      url,
-      title,
-      excerpt,
-      date,
-    } = post;
-
-    // Imagem do post
     const img = document.getElementById("ig-img");
-    if (img && image) {
-      img.src = image;
-      img.alt = alt || "Post do Instagram";
-    }
-
-    // Link que envolve a imagem
     const imgLink = document.getElementById("ig-img-link");
-    if (imgLink && url) {
-      imgLink.href = url;
-    }
-
-    // Título do post (h3)
     const titleText = document.getElementById("ig-title-text");
-    if (titleText && title) {
-      titleText.textContent = title;
-    }
-
-    // Resumo do post (p.ig-excerpt)
-    const excerptEl = document.getElementById("ig-excerpt");
-    if (excerptEl && excerpt) {
-      excerptEl.textContent = excerpt;
-    }
-
-    // Data de publicação (span.ig-date)
-    const dateEl = document.getElementById("ig-date");
-    if (dateEl && date) {
-      dateEl.textContent = `Publicado em ${date}`;
-    }
-
-    // Botão "Ver no Instagram"
+    const excerpt = document.getElementById("ig-excerpt");
+    const date = document.getElementById("ig-date");
     const cta = document.getElementById("ig-cta");
-    if (cta && url) {
-      cta.href = url;
+
+    // Atualiza a imagem (src e alt).
+    if (img) {
+      img.src = post.image;
+      img.alt = post.alt || "";
+    }
+
+    // Atualiza o link que envolve a imagem.
+    if (imgLink) {
+      imgLink.href = post.url || INSTAGRAM_FALLBACK_URL;
+    }
+
+    // Atualiza o título (h3).
+    if (titleText) {
+      titleText.textContent = post.title || "";
+    }
+
+    // Atualiza o resumo (p.ig-excerpt).
+    if (excerpt) {
+      excerpt.textContent = post.excerpt || "";
+    }
+
+    // Atualiza a data de publicação (span.ig-date).
+    if (date) {
+      date.textContent = `Publicado em ${post.date || ""}`.trim();
+    }
+
+    // Atualiza o botão "Ver no Instagram".
+    if (cta) {
+      cta.href = post.url || INSTAGRAM_FALLBACK_URL;
     }
   };
 
   /**
-   * Função principal assíncrona: busca o JSON e atualiza a seção.
-   * Em caso de erro, mantém os valores estáticos do HTML.
+   * Busca o JSON de posts e atualiza a seção "Do Instagram".
+   * Em caso de falha ou dados inválidos, faz fallback silencioso
+   * mantendo os valores estáticos presentes no HTML.
    */
-  const initInstagramSection = async () => {
+  const loadLatestInstagramPost = async () => {
     try {
-      // Busca o arquivo JSON de posts
+      // 1. Busca o arquivo data/posts.json via fetch.
       const response = await fetch(POSTS_URL, { cache: "no-cache" });
 
       if (!response.ok) {
-        throw new Error(`Falha ao carregar posts: ${response.status} ${response.statusText}`);
+        throw new Error(`HTTP ${response.status} - ${response.statusText}`);
       }
 
-      const posts = await response.json();
+      // 2. Converte a resposta em objeto JavaScript.
+      // O JSON.parse retorna um OBJETO com a propriedade "posts" (array).
+      const postsData = await response.json();
 
-      // Valida que o retorno é um array
-      if (!Array.isArray(posts)) {
-        throw new Error("Formato inválido: esperado um array de posts.");
-      }
-
-      // Se o array estiver vazio, faz fallback silencioso
-      if (posts.length === 0) {
-        console.warn("Nenhum post encontrado em data/posts.json. Mantendo conteúdo estático.");
+      // 3. Valida que postsData.posts é realmente um array.
+      const posts = postsData?.posts;
+      if (!Array.isArray(posts) || posts.length === 0) {
+        // 6. Se posts estiver vazio ou ausente, fallback silencioso.
+        console.warn("[main.js] Nenhum post disponível em data/posts.json.");
         return;
       }
 
-      // Pega o post mais recente (primeiro item do array)
+      // 4. Pega o post mais recente (primeiro do array).
       const latest = posts[0];
 
-      // Atualiza a seção "Do Instagram" no DOM
+      // 5. Atualiza dinamicamente a seção "Do Instagram".
       updateInstagramSection(latest);
     } catch (error) {
-      // Fallback silencioso: apenas avisa no console e mantém o HTML estático
-      console.warn("Não foi possível carregar o post do Instagram:", error.message);
+      // 5. Se fetch falhar (rede, JSON inválido, etc.), fallback silencioso.
+      // Os valores estáticos do HTML permanecem visíveis.
+      console.warn("[main.js] Falha ao carregar data/posts.json:", error);
     }
   };
 
-  // Inicializa a seção de forma assíncrona
-  initInstagramSection();
+  // Inicia o carregamento do post mais recente.
+  loadLatestInstagramPost();
 })();
