@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://edusidegum.github.io/marcialudwiginteriores/sitemap.xml

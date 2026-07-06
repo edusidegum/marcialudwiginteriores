@@ -1,0 +1,29 @@
+{
+  "updatedAt": "2026-07-06",
+  "posts": [
+    {
+      "date": "2026-07-06",
+      "title": "Projeto com foco em aconchego e funcionalidade",
+      "excerpt": "Uma composição limpa, acolhedora e pensada para o uso real do espaço, com linguagem visual alinhada ao perfil do cliente.",
+      "image": "assets/img/project-1.jpg",
+      "alt": "Última publicação do Instagram da Marcia Ludwig Interiores",
+      "url": "https://www.instagram.com/p/SEU-POST-1/"
+    },
+    {
+      "date": "2026-06-28",
+      "title": "Ambiente com materiais naturais e tons suaves",
+      "excerpt": "Referência para próximos conteúdos, reforçando identidade, estética e coerência de marca.",
+      "image": "assets/img/project-2.jpg",
+      "alt": "Publicação anterior do Instagram da Marcia Ludwig Interiores",
+      "url": "https://www.instagram.com/p/SEU-POST-2/"
+    },
+    {
+      "date": "2026-06-20",
+      "title": "Solução visual para interiores residenciais",
+      "excerpt": "Estrutura de post pensada para manter o site atualizado sem depender de CMS pesado.",
+      "image": "assets/img/project-3.jpg",
+      "alt": "Terceira publicação do Instagram da Marcia Ludwig Interiores",
+      "url": "https://www.instagram.com/p/SEU-POST-3/"
+    }
+  ]
+}
