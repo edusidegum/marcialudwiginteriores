@@ -2,28 +2,28 @@
   "updatedAt": "2026-07-06",
   "posts": [
     {
-      "date": "2026-07-06",
-      "title": "Projeto com foco em aconchego e funcionalidade",
-      "excerpt": "Uma composição limpa, acolhedora e pensada para o uso real do espaço, com linguagem visual alinhada ao perfil do cliente.",
       "image": "assets/img/project-1.jpg",
-      "alt": "Última publicação do Instagram da Marcia Ludwig Interiores",
-      "url": "https://www.instagram.com/p/SEU-POST-1/"
+      "alt": "Sala de estar com móveis sob medida e cortinas de alta qualidade assinada por Marcia Ludwig Interiores",
+      "title": "Da concepção ao acompanhamento da obra",
+      "excerpt": "Da concepção do projeto ao acompanhamento da obra: móveis sob medida, cortinas e persianas de alta qualidade. Cada detalhe pensado para traduzir funcionalidade, estética e execução precisa no Vale do Taquari.",
+      "date": "2026-07-04",
+      "url": "https://www.instagram.com/p/CxYz0123Abc/"
     },
     {
-      "date": "2026-06-28",
-      "title": "Ambiente com materiais naturais e tons suaves",
-      "excerpt": "Referência para próximos conteúdos, reforçando identidade, estética e coerência de marca.",
       "image": "assets/img/project-2.jpg",
-      "alt": "Publicação anterior do Instagram da Marcia Ludwig Interiores",
-      "url": "https://www.instagram.com/p/SEU-POST-2/"
+      "alt": "Ambiente de design de interiores com aconchego, elegância e modernidade",
+      "title": "Aconchego, elegância e modernidade",
+      "excerpt": "Design de interiores com funcionalidade, estética e execução precisa. Um ambiente que une aconchego, elegância e modernidade — pensado para acolher a rotina de quem vive cada espaço.",
+      "date": "2026-06-28",
+      "url": "https://www.instagram.com/p/CwVu9876Def/"
     },
     {
-      "date": "2026-06-20",
-      "title": "Solução visual para interiores residenciais",
-      "excerpt": "Estrutura de post pensada para manter o site atualizado sem depender de CMS pesado.",
       "image": "assets/img/project-3.jpg",
-      "alt": "Terceira publicação do Instagram da Marcia Ludwig Interiores",
-      "url": "https://www.instagram.com/p/SEU-POST-3/"
+      "alt": "Projeto de interiores que une funcionalidade e emoção em ambiente personalizado",
+      "title": "Design: a ponte entre funcionalidade e emoção",
+      "excerpt": "Muito além da estética, o design é a ponte entre a funcionalidade e a emoção. Projetos que traduzem histórias e necessidades em espaços feitos sob medida para cada cliente.",
+      "date": "2026-06-20",
+      "url": "https://www.instagram.com/p/CvTs5432Ghi/"
     }
   ]
 }
