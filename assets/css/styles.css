@@ -513,3 +513,14 @@ ul {
     padding: 50px 0;
   }
 }
+/* Inserir logo abaixo da regra .portfolio-grid existente */
+.portfolio-grid.four {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* Inserir dentro do bloco @media (max-width: 860px) existente */
+@media (max-width: 860px) {
+  .portfolio-grid.four {
+    grid-template-columns: 1fr;
+  }
+}
